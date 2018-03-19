@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+
+    <item
+        android:id="@+id/navigation_ngo"
+        android:icon="@drawable/ngo"
+        android:title="NGOs" />
+
+    <item
+        android:id="@+id/navigation_registerngo"
+        android:icon="@drawable/register_ngo"
+        android:title="Register NGO" />
+
+    <item
+        android:id="@+id/navigation_login"
+        android:icon="@drawable/profile"
+        android:title="Login" />
+
+    <item
+        android:id="@+id/navigation_contact"
+        android:icon="@drawable/about_us"
+        android:title="Contact Us" />
+
+</menu>

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_events"
+            android:icon="@drawable/event"
+            android:title="Events" />
+        <item
+            android:id="@+id/nav_ngos"
+            android:icon="@drawable/ngo"
+            android:title="NGOs" />
+        <item
+            android:id="@+id/nav_registerngo"
+            android:icon="@drawable/register_ngo"
+            android:title="Register NGO" />
+        <item
+            android:id="@+id/nav_contact"
+            android:icon="@drawable/contact"
+            android:title="Contact" />
+    </group>
+
+
+
+</menu>
