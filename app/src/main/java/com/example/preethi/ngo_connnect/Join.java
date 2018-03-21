@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.util.Patterns;
 import android.view.View;
+import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RadioButton;
@@ -48,6 +49,7 @@ public class Join extends AppCompatActivity {
         tv.setText(eventName);
         tv1.setText(ngoName);
 
+
         joinee = (EditText) findViewById(R.id.name);
         email = (EditText) findViewById(R.id.email);
         contact = (EditText) findViewById(R.id.contact);
@@ -71,6 +73,8 @@ public class Join extends AppCompatActivity {
             }
         });
     }
+
+
     public void done(View v) {
         //register();
         Join.JoinForEvent joinerDetails = new Join.JoinForEvent();
@@ -150,7 +154,7 @@ public class Join extends AppCompatActivity {
             makeText(Join.this, r, LENGTH_SHORT).show();
 
             if (isSuccess) {
-                Intent i = new Intent(Join.this, Testing.class);
+                Intent i = new Intent(Join.this, JoinAcknowledgement.class);
                 startActivity(i);
                 finish();
             }
