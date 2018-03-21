@@ -22,6 +22,7 @@
         android:layout_marginTop="20sp"
         android:gravity="center_horizontal"
         android:text="Sponsor"
+        android:layout_weight="1"
         android:textColor="@color/colorPrimary"
         android:textSize="25sp"
         android:textStyle="bold" />
@@ -34,6 +35,13 @@
             android:layout_gravity="clip_horizontal"
             android:textSize="25sp"
             />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:text="Phone Number"
+            android:id="@+id/phonenum"
+            android:textIsSelectable="true"/>
 
         <ImageView
             android:layout_width="match_parent"
