@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
+import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -41,15 +42,34 @@ public class Login extends AppCompatActivity {
 
         sharedpreferences = getSharedPreferences(MyPREFERENCES, Context.MODE_PRIVATE);
 
-        loginok.setOnClickListener(new View.OnClickListener() {
+
+        /*loginok.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
                 Login.DoLogin doLogin = new Login.DoLogin();
                 doLogin.execute();
 
+                Intent myIntent = new Intent(Login.this, NgoEventsList.class);
+
+
+                EditText et = (EditText) findViewById(R.id.emailid);
+                String getEmail = et.getText().toString();
+
+                Bundle bundle = new Bundle();
+                bundle.putString("email", getEmail);
+                myIntent.putExtras(bundle);
+                startActivity(myIntent);
+
             }
-        });
+        });*/
+    }
+
+    public void Login(View view) {
+
+        Login.DoLogin doLogin = new Login.DoLogin();
+        doLogin.execute();
+
     }
 
 
@@ -103,6 +123,7 @@ public class Login extends AppCompatActivity {
                             SharedPreferences.Editor editor = sharedpreferences.edit();
                             editor.putString("Email", rs.getString("email"));
                             editor.putString("Password", rs.getString("password"));
+                            editor.putString("organisation" , rs.getString("name"));
                             editor.apply();
                         }else{
                             z = "Invalid Credentials";
