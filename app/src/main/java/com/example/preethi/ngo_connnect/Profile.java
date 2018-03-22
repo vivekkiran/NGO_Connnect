@@ -76,9 +76,13 @@ public class Profile extends AppCompatActivity {
 
                 java.sql.Connection con = DatabaseConnection.getConnection();
                 System.out.println("Connection Established");
-                String name = "youngistan";
 
-                String query = "select name , description , address , email , contact , experience , weblink , facebook , linkedin from RegisterNgo where name = '"+name+"' ";
+                sharedpreferences = getSharedPreferences(MyPREFERENCES, Context.MODE_PRIVATE);
+                String email = sharedpreferences.getString("Email","");
+                System.out.println(email);
+
+
+                String query = "select name , description , address , email , phone , experience , weblink , facebook , linkedin from RegisterNgo where email = '"+email+"' ";
                 System.out.println(query);
                 Statement stmt = con.createStatement();
                 System.out.println("After Statement stmt");
