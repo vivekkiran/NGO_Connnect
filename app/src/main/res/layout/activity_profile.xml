@@ -13,7 +13,7 @@
         android:layout_height="wrap_content"
         android:scrollbars="vertical">
 
-        <include layout="@layout/profile"></include>
+       <!--<include layout="@layout/profile"></include> -->
 
     </ListView>
 
