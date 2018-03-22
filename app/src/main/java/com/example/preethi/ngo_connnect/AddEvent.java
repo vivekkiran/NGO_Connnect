@@ -33,11 +33,13 @@ import static droidninja.filepicker.FilePickerConst.REQUEST_CODE;
 public class AddEvent extends AppCompatActivity {
 
     Button addevent , uploadpicture;
-    SharedPreferences sharedpreferences;
-    private String name, amount, venue, date, time, description;
-    private EditText ev_name, ev_amount, ev_venue, ev_date, ev_time, ev_description;
+    SharedPreferences sharedPreferences;
+    public static final String MyPREFERENCES = "MyPrefs" ;
+    private String name, amount, venue, date, time, description , contact;
+    private EditText ev_name, ev_amount, ev_venue, ev_date, ev_time, ev_description , ev_contact;
     ImageView imagev;
     ImageView ev_poster;
+    String email;
 
     String emailId;
 
@@ -48,8 +50,9 @@ public class AddEvent extends AppCompatActivity {
 
         System.out.println("In Add Event Class");
 
+
         imagev = (ImageView) findViewById(R.id.image);
-        sharedpreferences = getSharedPreferences(MyPREFERENCES, Context.MODE_PRIVATE);
+        sharedPreferences = getSharedPreferences(MyPREFERENCES, Context.MODE_PRIVATE);
         addevent = (Button) findViewById(R.id.addevent);
         ev_name = (EditText) findViewById(R.id.event_name);
         ev_amount = (EditText) findViewById(R.id.amount);
@@ -58,6 +61,8 @@ public class AddEvent extends AppCompatActivity {
         ev_time = (EditText) findViewById(R.id.time);
         ev_description = (EditText) findViewById(R.id.description);
         ev_poster = (ImageView) findViewById(R.id.image);
+        ev_contact = (EditText) findViewById(R.id.event_contact);
+
 
         addevent.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -85,7 +90,7 @@ public class AddEvent extends AppCompatActivity {
     }
 
     public void addEvent(View view) {
-        Intent intent = new Intent(AddEvent.this, Testing.class);
+        Intent intent = new Intent(AddEvent.this, NgoEventsList.class);
         startActivity(intent);
     }
 
@@ -181,6 +186,7 @@ public class AddEvent extends AppCompatActivity {
         date = ev_date.getText().toString().trim();
         time = ev_time.getText().toString().trim();
         description = ev_description.getText().toString().trim();
+        contact = ev_contact.getText().toString().trim();
 
         System.out.print("In initalize method");
 
@@ -196,6 +202,7 @@ public class AddEvent extends AppCompatActivity {
         String venue = ev_venue.getText().toString().trim();
         String date = ev_date.getText().toString().trim();
         String description = ev_description.getText().toString().trim();
+        String contact = ev_contact.getText().toString().trim();
         private ProgressDialog pDialog;
 
 
@@ -213,7 +220,7 @@ public class AddEvent extends AppCompatActivity {
             Toast.makeText(AddEvent.this, r, Toast.LENGTH_SHORT).show();
 
             if (isSuccess) {
-                Intent i = new Intent(AddEvent.this, Testing.class);
+                Intent i = new Intent(AddEvent.this, NgoEventsList.class);
                 startActivity(i);
                 finish();
             }
@@ -237,12 +244,26 @@ public class AddEvent extends AppCompatActivity {
                     Statement stmt = con.createStatement();
                     ResultSet rs = stmt.executeQuery(query);
                     if (rs.next()) {
-                        z = "User Already Exists";
+                        z = "Event Already Exists";
                         isSuccess = false;
+                        } else {
 
-                    } else {
+                        sharedPreferences = getSharedPreferences(MyPREFERENCES, Context.MODE_PRIVATE);
+                        String email = sharedPreferences.getString("Email","");
+                        System.out.println(email);
+                        String organisation = sharedPreferences.getString("organisation" , "");
+                        System.out.println(organisation);
 
-                        int flag = stmt.executeUpdate("insert into Events (event_name, cost , location , date , time ,  description , poster) values('" + name + "' , '" + amount + "' , '" + venue + "' , '" + date + "' , '" + time + "' , '" + description + "'  , '"+ imagev +"' );");
+
+
+                        /*
+                        ResultSet query1 = stmt.executeQuery(" select name from registerNgo where email = '"+email+"' ");
+                        if(query1.next()) {
+                            String organisation = query1.getString(name);
+                            System.out.println(organisation);
+                        }*/
+
+                        int flag = stmt.executeUpdate("insert into Events (event_name, cost , location , date , time ,  description , poster , phone , email , organisation) values('" + name + "' , '" + amount + "' , '" + venue + "' , '" + date + "' , '" + time + "' , '" + description + "'  , '"+ imagev +"' , '"+contact+"' , '"+email+"' , '"+organisation+"' );");
                         System.out.println(flag);
                         z = "SignUp successfull";
                         isSuccess = true;
