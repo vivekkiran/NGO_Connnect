@@ -72,6 +72,7 @@ public class ProfileAdapter extends BaseAdapter implements ListAdapter {
         // TODO Auto-generated method stub
         return 0;
     }
+
     public View getView(int position, View child, ViewGroup parent) {
 
         ProfileAdapter.Holder holder;
@@ -80,7 +81,7 @@ public class ProfileAdapter extends BaseAdapter implements ListAdapter {
 
         if (child == null) {
             layoutInflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-            child = layoutInflater.inflate(R.layout.eventdetails, null);
+            child = layoutInflater.inflate(R.layout.profile, null);
 
             holder = new Holder();
 
@@ -111,7 +112,6 @@ public class ProfileAdapter extends BaseAdapter implements ListAdapter {
 
         return child;
     }
-
     public class Holder {
         TextView username;
         TextView description;
