@@ -67,6 +67,8 @@ public class Join extends AppCompatActivity {
                 //startActivityForResult(i , 1);
                 Join.JoinForEvent joinerDetails = new Join.JoinForEvent();
                 joinerDetails.execute("");
+                MailOperation l = new MailOperation();
+                l.execute();
                 /*Register.DoSignup doSignup = new Register.DoSignup();
                 doSignup.execute();*/
 
@@ -139,7 +141,7 @@ public class Join extends AppCompatActivity {
         String emailid = email.getText().toString().trim();
         String contactno = contact.getText().toString().trim();
         String desig = designation.getText().toString().trim();
-        String value = ((RadioButton)findViewById(joinAs.getCheckedRadioButtonId())).getText().toString();
+        String value = ((RadioButton) findViewById(joinAs.getCheckedRadioButtonId())).getText().toString();
 
         @Override
         protected void onPreExecute() {
@@ -169,8 +171,8 @@ public class Join extends AppCompatActivity {
 
                 java.sql.Connection con = DatabaseConnection.getConnection();
                 System.out.println("Connection Established");
-                String query1 = "select * from JoineeDetails where contact = '"+contactno+"' and email = '"+emailid+"'";
-                String query = "insert into JoineeDetails(eventName, ngoName, joineeName, email, contact, designation, joinas) values( '"+eventJoined+"','"+ngoJoined+"','"+joineeName+"','"+emailid+"','"+contactno+"','"+desig+"','"+value+"')";
+                String query1 = "select * from JoineeDetails where contact = '" + contactno + "' and email = '" + emailid + "'";
+                String query = "insert into JoineeDetails(eventName, ngoName, joineeName, email, contact, designation, joinas) values( '" + eventJoined + "','" + ngoJoined + "','" + joineeName + "','" + emailid + "','" + contactno + "','" + desig + "','" + value + "')";
                 System.out.println(query);
                 Statement stmt = con.createStatement();
                 ResultSet rs = stmt.executeQuery(query1);
@@ -184,12 +186,16 @@ public class Join extends AppCompatActivity {
                     System.out.println(contactno);
                     isSuccess = true;
                     System.out.println("User joined!!");
+
+
                 }
-            }catch (Exception ex){
+            } catch (Exception ex) {
                 Log.e("ERROR", ex.getMessage());
             }
             return "";
         }
 
     }
+
+
 }
