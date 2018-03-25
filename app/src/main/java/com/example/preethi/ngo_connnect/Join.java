@@ -67,8 +67,7 @@ public class Join extends AppCompatActivity {
                 //startActivityForResult(i , 1);
                 Join.JoinForEvent joinerDetails = new Join.JoinForEvent();
                 joinerDetails.execute("");
-                MailOperation l = new MailOperation();
-                l.execute();
+
                 /*Register.DoSignup doSignup = new Register.DoSignup();
                 doSignup.execute();*/
 
@@ -186,7 +185,8 @@ public class Join extends AppCompatActivity {
                     System.out.println(contactno);
                     isSuccess = true;
                     System.out.println("User joined!!");
-
+                    MailOperation l = new MailOperation();
+                    l.execute();
 
                 }
             } catch (Exception ex) {

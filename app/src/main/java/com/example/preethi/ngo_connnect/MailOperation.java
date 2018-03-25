@@ -10,10 +10,10 @@ public class MailOperation extends AsyncTask<Void, Void, String> {
     @Override
     protected String doInBackground(Void... params) {
         try {
-            GMailSender sender = new GMailSender("mahathivavilala97@gmail.com", "Suz@nneWright17");
+            GMailSender sender = new GMailSender("mahathivavilala97@gmail.com", "OurPassword");
             sender.sendMail("SMTP from NGOConnect",
                     "You have successfully joined the event", "mahathivavilala97@gmail.com",
-                    "mahathivavilala97@gmail.com, chasesaphira@gmail.com, anualek123@gmail.com");
+                    "mahathivavilala97@gmail.com, chasesaphira@gmail.com");
         } catch (Exception e) {
             Log.e("error", e.getMessage(), e);
             return "Email Not Sent";
