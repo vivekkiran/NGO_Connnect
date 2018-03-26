@@ -13,7 +13,7 @@ public class MailOperation extends AsyncTask<Void, Void, String> {
             GMailSender sender = new GMailSender("team.unitedly@gmail.com", "unitedly.team5");
             sender.sendMail("Hearty Welcome!",
                     "You have successfully joined the event", "team.unitedly@gmail.com",
-                    "mahathivavilala97@gmail.com, chasesaphira@gmail.com");
+                    "mahathivavilala97@gmail.com, chasesaphira@gmail.com, anualek123@gmail.com, team.unitedly@gmail.com");
         } catch (Exception e) {
             Log.e("error", e.getMessage(), e);
             return "Email Not Sent";
